@@ -1,7 +1,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-
+/* Read from command line and returns char pointer to string command*/
 char * get_a_line(void)
 {
 	char * line = malloc(100), * linep = line;
@@ -35,6 +35,7 @@ char * get_a_line(void)
 	return linep;
 }
 
+/* Read from a char pointer and returns its length as a size_t (unsigned int)*/
 size_t length(const char *str)
 {
 	const char *s;
@@ -42,13 +43,18 @@ size_t length(const char *str)
 	return(s-str);
 }
 
+/* My implementation of system() library function*/
+int my_system(const char *command)
+{
+
+}
 
 
 int main(){
 	while(1){
 		char * line = get_a_line();
 		if(length(line) > 1) {
-			system(line);
+			my_system(line);
 		}
 		else{
 			exit(0);
