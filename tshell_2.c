@@ -10,7 +10,7 @@ char * get_a_line(void)
 	if(line == NULL)
 		return NULL;
 
-	for(;;){
+	while(1){
 		c = fgetc(stdin);
 		if(c == EOF)
 			break;
