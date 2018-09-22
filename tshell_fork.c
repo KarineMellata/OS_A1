@@ -46,7 +46,22 @@ size_t length(const char *str)
 /* My implementation of system() library function using fork()*/
 int my_system(const char *command)
 {
-
+	pid_t childPid;
+	int status;
+	switch(childPid = fork()){
+		/* Error */
+		case -1:
+			status = -1; 
+			perror("Error in creating child process");
+			break;
+		/* Successful */
+		case 0:
+			execve("/bin/sh", "sh", "-c", command, (char *) NULL);
+			_exit(127);
+		default:
+			waitpid(childPid, &status, 0);
+			
+	}
 }
 
 
