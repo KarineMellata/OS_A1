@@ -43,7 +43,7 @@ size_t length(const char *str)
 	return(s-str);
 }
 
-/* My implementation of system() library function*/
+/* My implementation of system() library function using fork()*/
 int my_system(const char *command)
 {
 

@@ -3,4 +3,4 @@
 Implementation of the tiny shell using the system() library function.
 
 ## tshell_2.c
-Implementation of the tiny shell using my implementation of system() (my_system()) using fork(), vfork() and clone().
+Implementation of the tiny shell using my implementation of system() (my_system()) using fork().
