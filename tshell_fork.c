@@ -57,14 +57,12 @@ int my_system(const char *command)
 		/* Successful */
 		case 0:
 			execve("/bin/sh", "sh", "-c", command, (char *) NULL);
-			_exit(127);
 		default:
 			waitpid(childPid, &status, 0);
 			
 	}
+	return 0;
 }
-
-
 int main(){
 	while(1){
 		char * line = get_a_line();
