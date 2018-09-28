@@ -48,6 +48,7 @@ size_t length(const char *str)
 int my_system(const char *command)
 {
 	#ifdef FORK
+		printf("You are in FORK mode \n");
 		pid_t childPid, wPid;
 		int status;
 		switch(childPid = fork()){
@@ -66,9 +67,10 @@ int my_system(const char *command)
 				waitpid(childPid, &status, 0);
 		}
 	#elif VFORK
+		printf("You are in VFORK mode \n");
 		pid_t childPid, wPid;
 		int status;
-		switch(childPid = fork()){
+		switch(childPid = vfork()){
 			/* Error */
 			case -1:
 				status = -1; 
@@ -84,10 +86,13 @@ int my_system(const char *command)
 				waitpid(childPid, &status, 0);
 		}
 	#elif CLONE
+		printf("You are in CLONE mode \n");
 		system(command);
 	#elif PIPE
+		printf("You are in PIPE mode \n");
 		system(command);
 	#else
+		printf("You are in built-in system  mode");
 		system(command);
 	#endif
 		return 0;
